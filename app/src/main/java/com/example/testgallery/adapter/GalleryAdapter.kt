@@ -36,6 +36,6 @@ class GalleryAdapter() : RecyclerView.Adapter<GalleryAdapter.GalleryHolder>() {
 
 
     inner class GalleryHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val image = itemView.itemOfImage
+        val image = itemView.ivPhoto
     }
 }
