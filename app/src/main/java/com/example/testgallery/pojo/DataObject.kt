@@ -10,5 +10,5 @@ import com.google.gson.annotations.SerializedName
 data class DataObject (
     @SerializedName("data")
     @Expose
-    val data: List<Datum>? = null
+    val data: List<Datum>
 )

@@ -8,14 +8,14 @@ data class Datum (
 
     @SerializedName("id")
     @Expose
-    val id: Int? = null,
+    val id: Int,
 
     @SerializedName("name")
-    @Expose val name: String? = null,
+    @Expose val name: String,
 
     @SerializedName("description")
     @Expose
-    val description: String? = null,
+    val description: String,
 
     @SerializedName("image")
     @Expose

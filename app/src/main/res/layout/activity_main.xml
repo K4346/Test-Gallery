@@ -38,15 +38,17 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="76dp"
+        android:layout_marginBottom="56.5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         app:defaultNavHost="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
         app:layout_constraintBottom_toTopOf="@id/nav_view"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_name_fragment"
-        app:layout_constraintVertical_bias="0.489"
+        app:layout_constraintVertical_bias="0.479"
         app:navGraph="@navigation/mobile_navigation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

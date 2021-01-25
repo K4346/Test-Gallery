@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_new"
         android:icon="@drawable/today_icon"
         android:title="@string/title_new"
         android:fontFamily="@font/compact_display_semibold"/>
 
 
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_popular"
         android:icon="@drawable/fire"
         android:title="@string/title_popular"
         android:fontFamily="@font/compact_display_semibold"/>

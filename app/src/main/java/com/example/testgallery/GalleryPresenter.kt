@@ -3,9 +3,8 @@ package com.example.testgallery
 import android.util.Log
 import com.example.testgallery.api.ApiFactory
 import com.example.testgallery.pojo.Datum
-import com.example.testgallery.pojo.ImageInfo
-import com.google.gson.Gson
-import com.google.gson.JsonObject
+import com.example.testgallery.repositories.GalleryModel
+import com.example.testgallery.repositories.GalleryModelImpl
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -16,24 +15,19 @@ import moxy.MvpPresenter
 class GalleryPresenter: MvpPresenter<GalleryView>() {
     var dataList = ArrayList<Datum>()
     private val compositeDisposable = CompositeDisposable()
-
+    val model:GalleryModel=GalleryModelImpl()
 
     fun loadData(new: String="false", popularity: String="false", page: Int=1) {
+        Log.i("qwertys",new+popularity)
         val disposable =
-            ApiFactory.apiService.getPhotosInfo(new = new, popular = popularity, page = page)
-                .map {
-                    it.data
-                }
+           model.getSingleObject(new = new, popularity = popularity, page = page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    if (it != null) {
-                        viewState.loadPhotos(it)
-                        Log.i("qwerty",  dataList.toString())
 
-                    }
+                       viewState.loadPhotos(it.data)
+
                 }, {
-                    Log.i("qwerty", "it.toString(")
                 })
         compositeDisposable.add(disposable)
     }

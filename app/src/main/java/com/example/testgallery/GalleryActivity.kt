@@ -7,6 +7,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_main.*
 import moxy.MvpAppCompatActivity
 
 class GalleryActivity : MvpAppCompatActivity() {
@@ -23,19 +24,18 @@ class GalleryActivity : MvpAppCompatActivity() {
         setContentView(R.layout.activity_main)
         val actionBar = supportActionBar
         actionBar?.hide()
-
-        presenter = GalleryPresenter()
-//        presenter.loadData()
+        Log.i("qwertys",tv_name_fragment.text.toString())
+        tv_name_fragment.text="New"
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_notifications
+                R.id.navigation_new, R.id.navigation_popular
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-        Log.i("qwerty","AAAAAAAA")
+
     }
 
 }
