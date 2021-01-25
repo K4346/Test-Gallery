@@ -11,6 +11,11 @@
 
     <fragment
         android:id="@+id/navigation_popular"
-        android:name="com.example.testgallery.ui.notifications.NotificationsFragment"
+        android:name="com.example.testgallery.ui.notifications.PopularFragment"
         android:label="@string/title_popular" />
+
+    <fragment
+        android:id="@+id/detail_navigation"
+        android:name="com.example.testgallery.ui.home.DetailFragment"
+        android:label="Detail" />
 </navigation>

@@ -6,7 +6,7 @@ import moxy.viewstate.strategy.AddToEndSingleStrategy
 import moxy.viewstate.strategy.StateStrategyType
 
 @StateStrategyType(value = AddToEndSingleStrategy::class)
-interface GalleryView:MvpView {
+interface GalleryView : MvpView {
 
     fun loadPhotos(data: List<Datum>)
 }

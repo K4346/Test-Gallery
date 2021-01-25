@@ -28,7 +28,7 @@
         android:fontFamily="@font/compact_display_semibold"
         android:text="Get better - unused exploration"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/ivTitleImage" />
 
     <TextView
         android:id="@+id/tvDescribtion"

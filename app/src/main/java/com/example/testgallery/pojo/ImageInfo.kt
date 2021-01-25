@@ -5,9 +5,7 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 
-
-
-class ImageInfo (
+class ImageInfo(
     @SerializedName("id")
     @Expose
     val id: Int,
