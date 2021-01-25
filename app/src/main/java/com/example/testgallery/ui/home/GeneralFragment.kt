@@ -7,10 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.testgallery.GalleryActivity
-import com.example.testgallery.GalleryPresenter
-import com.example.testgallery.GalleryView
-import com.example.testgallery.R
+import com.example.testgallery.*
 import com.example.testgallery.adapter.GalleryAdapter
 import com.example.testgallery.pojo.Datum
 import kotlinx.android.synthetic.main.recycler_view.*
@@ -21,11 +18,11 @@ import moxy.presenter.InjectPresenter
 open class GeneralFragment(
     private val new: String,
     private val popular: String
-) : MvpAppCompatFragment(), GalleryView {
+) : MvpAppCompatFragment(), GeneraFragmentView {
 
 
     @InjectPresenter
-    lateinit var presenter: GalleryPresenter
+    lateinit var presenter: GeneraFragmentPresenter
 
     private val adapter = GalleryAdapter()
 

@@ -7,9 +7,10 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.actionbars.*
 import moxy.MvpAppCompatActivity
+import moxy.presenter.InjectPresenter
 
-class GalleryActivity : MvpAppCompatActivity() {
-
+class GalleryActivity : MvpAppCompatActivity(),GalleryView{
+    @InjectPresenter
     lateinit var presenter: GalleryPresenter
     override fun onDestroy() {
         super.onDestroy()

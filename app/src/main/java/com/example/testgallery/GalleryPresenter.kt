@@ -11,27 +11,8 @@ import moxy.InjectViewState
 import moxy.MvpPresenter
 
 @InjectViewState
-class GalleryPresenter : MvpPresenter<GalleryView>() {
-    var dataList = ArrayList<Datum>()
+class GalleryPresenter : MvpPresenter<GalleryView>(){
     private val compositeDisposable = CompositeDisposable()
-    val model: GalleryModel = GalleryModelImpl()
-
-    fun loadData(new: String = "false", popularity: String = "false", page: Int = 1) {
-        Log.i("qwertys", new + popularity)
-        val disposable =
-            model.getSingleObject(new = new, popularity = popularity, page = page)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-
-                    viewState.loadPhotos(it.data)
-
-                }, {
-                })
-        compositeDisposable.add(disposable)
-    }
-
-
     fun disposeComposite() {
         compositeDisposable.dispose()
     }
