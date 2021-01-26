@@ -33,6 +33,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/bottom_nav_menu" />
 
+
+
     <fragment
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -48,5 +50,49 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_name_fragment"
         app:layout_constraintVertical_bias="0.479"
         app:navGraph="@navigation/mobile_navigation" />
+
+
+    <ImageView
+        android:id="@+id/ivBadConnection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/nav_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/no_internet" />
+
+    <TextView
+        android:id="@+id/tvTitleBadConnection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/oh_shucks"
+        android:textSize="20dp"
+        android:fontFamily="@font/compact_display_semibold"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/text_color"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivBadConnection" />
+
+    <TextView
+        android:id="@+id/tvDescriptionBadConnection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:paddingLeft="110dp"
+        android:paddingRight="110dp"
+        android:visibility="invisible"
+        android:fontFamily="@font/compact_display_regular"
+        android:textColor="@color/description_color"
+        android:text="@string/slow_or_no_internet_connection_please_check_your_internet_settings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleBadConnection" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

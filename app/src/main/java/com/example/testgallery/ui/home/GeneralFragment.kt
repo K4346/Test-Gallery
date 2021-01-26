@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.testgallery.*
 import com.example.testgallery.adapter.GalleryAdapter
 import com.example.testgallery.pojo.Datum
+import com.example.testgallery.presenters.GeneraFragmentPresenter
+import com.example.testgallery.view.GeneraFragmentView
 import kotlinx.android.synthetic.main.recycler_view.*
 import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
@@ -59,6 +61,13 @@ open class GeneralFragment(
         adapter.imageList = data
         recyclerVIewOfImage.adapter = adapter
         recyclerVIewOfImage.layoutManager = GridLayoutManager(context, 2)
+    }
+
+    override fun ConnectionInternet(flag: Boolean) {
+        var mContext: FragmentActivity? = FragmentActivity()
+        mContext = this!!.getActivity() as GalleryActivity
+        if (flag==false) mContext.badConnection()
+        else mContext.goodConnection()
     }
 
 

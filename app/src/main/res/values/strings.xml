@@ -3,4 +3,6 @@
     <string name="title_new">New</string>
     <string name="title_popular">Popular</string>
     <string name="photo">Photo</string>
+    <string name="slow_or_no_internet_connection_please_check_your_internet_settings">Slow or no internet connection. Please check your internet settings</string>
+    <string name="oh_shucks">Oh shucks!</string>
 </resources>

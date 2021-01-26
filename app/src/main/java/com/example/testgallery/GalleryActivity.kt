@@ -6,10 +6,12 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.actionbars.*
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.recycler_view.*
 import moxy.MvpAppCompatActivity
 import moxy.presenter.InjectPresenter
 
-class GalleryActivity : MvpAppCompatActivity(),GalleryView{
+class GalleryActivity : MvpAppCompatActivity(), GalleryView {
     @InjectPresenter
     lateinit var presenter: GalleryPresenter
     override fun onDestroy() {
@@ -50,5 +52,26 @@ class GalleryActivity : MvpAppCompatActivity(),GalleryView{
         arrow_button.visibility = View.VISIBLE
 
     }
+
+    fun goodConnection(){
+
+        if (ivBadConnection.visibility==View.VISIBLE){
+            ivBadConnection.visibility=View.INVISIBLE
+            tvTitleBadConnection.visibility=View.INVISIBLE
+            tvDescriptionBadConnection.visibility=View.INVISIBLE
+
+        }
+
+    }
+
+    fun badConnection(){
+       if (ivBadConnection.visibility==View.INVISIBLE){
+            ivBadConnection.visibility = View.VISIBLE
+            tvTitleBadConnection.visibility = View.VISIBLE
+            tvDescriptionBadConnection.visibility = View.VISIBLE
+        }
+    }
+
+
 
 }

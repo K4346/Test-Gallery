@@ -1,6 +1,7 @@
-package com.example.testgallery
+package com.example.testgallery.presenters
 
 import android.util.Log
+import com.example.testgallery.view.GeneraFragmentView
 import com.example.testgallery.pojo.Datum
 import com.example.testgallery.repositories.GalleryModel
 import com.example.testgallery.repositories.GalleryModelImpl
@@ -23,10 +24,12 @@ class GeneraFragmentPresenter : MvpPresenter<GeneraFragmentView>() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-
+                    viewState.ConnectionInternet(true)
                     viewState.loadPhotos(it.data)
 
                 }, {
+                    viewState.ConnectionInternet(false)
+
                 })
         compositeDisposable.add(disposable)
     }

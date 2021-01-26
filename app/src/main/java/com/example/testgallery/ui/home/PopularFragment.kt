@@ -1,4 +1,4 @@
-package com.example.testgallery.ui.notifications
+package com.example.testgallery.ui.home
 
 import com.example.testgallery.ui.home.GeneralFragment
 
