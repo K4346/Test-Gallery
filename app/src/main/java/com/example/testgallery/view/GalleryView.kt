@@ -1,4 +1,4 @@
-package com.example.testgallery
+package com.example.testgallery.view
 
 import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndSingleStrategy

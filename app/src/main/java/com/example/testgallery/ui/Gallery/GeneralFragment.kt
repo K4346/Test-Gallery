@@ -1,4 +1,4 @@
-package com.example.testgallery.ui.home
+package com.example.testgallery.ui.Gallery
 
 import android.os.Bundle
 import android.view.LayoutInflater

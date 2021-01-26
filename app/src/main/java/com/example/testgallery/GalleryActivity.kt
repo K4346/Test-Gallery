@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.testgallery.presenters.GalleryPresenter
+import com.example.testgallery.view.GalleryView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.actionbars.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -53,25 +55,26 @@ class GalleryActivity : MvpAppCompatActivity(), GalleryView {
 
     }
 
-    fun goodConnection(){
+    fun goodConnection() {
 
-        if (ivBadConnection.visibility==View.VISIBLE){
-            ivBadConnection.visibility=View.INVISIBLE
-            tvTitleBadConnection.visibility=View.INVISIBLE
-            tvDescriptionBadConnection.visibility=View.INVISIBLE
+        if (ivBadConnection.visibility == View.VISIBLE) {
+            llBadConnection.visibility=View.INVISIBLE
+            ivBadConnection.visibility = View.INVISIBLE
+            tvTitleBadConnection.visibility = View.INVISIBLE
+            tvDescriptionBadConnection.visibility = View.INVISIBLE
 
         }
 
     }
 
-    fun badConnection(){
-       if (ivBadConnection.visibility==View.INVISIBLE){
+    fun badConnection() {
+        if (ivBadConnection.visibility == View.INVISIBLE) {
+            llBadConnection.visibility = View.VISIBLE
             ivBadConnection.visibility = View.VISIBLE
             tvTitleBadConnection.visibility = View.VISIBLE
             tvDescriptionBadConnection.visibility = View.VISIBLE
         }
     }
-
 
 
 }
