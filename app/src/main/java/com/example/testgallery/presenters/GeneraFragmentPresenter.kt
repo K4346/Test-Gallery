@@ -18,12 +18,12 @@ class GeneraFragmentPresenter : MvpPresenter<GeneraFragmentView>() {
     val model: GalleryModel = GalleryModelImpl()
 
     fun loadData(new: String = "false", popularity: String = "false", page: Int = 1) {
-        Log.i("qwertys", new + popularity)
         val disposable =
             model.getSingleObject(new = new, popularity = popularity, page = page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
+                    Log.i("qwertyu",it.data.toString())
                     viewState.ConnectionInternet(true)
                     viewState.loadPhotos(it.data)
 

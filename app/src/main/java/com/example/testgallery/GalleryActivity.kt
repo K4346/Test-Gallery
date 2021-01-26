@@ -9,7 +9,6 @@ import com.example.testgallery.view.GalleryView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.actionbars.*
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.recycler_view.*
 import moxy.MvpAppCompatActivity
 import moxy.presenter.InjectPresenter
 
@@ -58,7 +57,7 @@ class GalleryActivity : MvpAppCompatActivity(), GalleryView {
     fun goodConnection() {
 
         if (ivBadConnection.visibility == View.VISIBLE) {
-            llBadConnection.visibility=View.INVISIBLE
+            llBadConnection.visibility = View.INVISIBLE
             ivBadConnection.visibility = View.INVISIBLE
             tvTitleBadConnection.visibility = View.INVISIBLE
             tvDescriptionBadConnection.visibility = View.INVISIBLE

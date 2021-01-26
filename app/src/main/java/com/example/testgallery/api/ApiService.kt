@@ -10,7 +10,7 @@ interface ApiService {
     fun getPhotosInfo(
         @Query("new") new: String,
         @Query("popular") popular: String,
-        @Query("page") page: Int = 1,
+        @Query("page") page: Int,
         @Query("limit") limit: Int = 10
     ): Single<DataObject>
 }

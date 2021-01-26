@@ -8,11 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.testgallery.R
 import com.example.testgallery.api.ApiFactory
 import com.example.testgallery.pojo.Datum
+import com.example.testgallery.ui.Gallery.DetailFragment
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.image_item.view.*
 
 class GalleryAdapter() : RecyclerView.Adapter<GalleryAdapter.GalleryHolder>() {
-    var imageList: List<Datum> = listOf()
+    var imageList = ArrayList<Datum>()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -21,7 +22,7 @@ class GalleryAdapter() : RecyclerView.Adapter<GalleryAdapter.GalleryHolder>() {
     var onPhotoClickListener: OnPhotoClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GalleryHolder {
-        Log.i("qwerty", "ApiFactory.BASE_URL_IMAGE+image.image.name")
+        Log.i("qwerty","Trueeeeeee")
         val view = LayoutInflater.from(parent.context).inflate(R.layout.image_item, parent, false)
         return GalleryHolder(view)
     }
@@ -31,6 +32,10 @@ class GalleryAdapter() : RecyclerView.Adapter<GalleryAdapter.GalleryHolder>() {
         Picasso.get().load(ApiFactory.BASE_URL_IMAGE + image.image.name).into(holder.image)
         holder.itemView.setOnClickListener {
             onPhotoClickListener?.onPhotoClick(image)
+//       if (imageList.size-1==position){
+//           val detailFragment=DetailFragment()
+//           detailFragment.
+//       }
         }
     }
 
