@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -17,7 +16,6 @@ import com.example.testgallery.view.GeneraFragmentView
 import kotlinx.android.synthetic.main.recycler_view.*
 import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
-import java.util.ArrayList
 
 
 open class GeneralFragment(
@@ -31,11 +29,8 @@ open class GeneralFragment(
     lateinit var presenter: GeneraFragmentPresenter
 
     private val adapter = GalleryAdapter()
-    private var spisokDatum = ArrayList<Datum>()
-    private var hasNext = true
-    private var pagesOnRecycler = 1
-    private var isLoading = false
 
+//    var isLoading=true
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,14 +43,13 @@ open class GeneralFragment(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         swipe_container.setOnRefreshListener(this)
-
-        var mContext: FragmentActivity? = FragmentActivity()
-        mContext = this!!.getActivity() as GalleryActivity
+        presenter.pagesOnRecycler=1
+       val mContext = requireActivity() as GalleryActivity
         mContext.changeActionBar(popular)
 
         val myLayoutManager = GridLayoutManager(context, 2)
         recyclerVIewOfImage.layoutManager = myLayoutManager
-
+        recyclerVIewOfImage.adapter = adapter
         presenter.loadData(new = new, popularity = popular)
 
         adapter.onPhotoClickListener = object : GalleryAdapter.OnPhotoClickListener {
@@ -71,16 +65,12 @@ open class GeneralFragment(
 
         recyclerVIewOfImage.setOnScrollChangeListener { _: View, _: Int, _: Int, _: Int, _: Int ->
             val lastvisibleitemposition = myLayoutManager.findLastVisibleItemPosition()
-            if (pagesOnRecycler == 2) {
-
-                val k = lastvisibleitemposition
-            }
-            if (lastvisibleitemposition == adapter.itemCount - 1) {
-                if (!isLoading && hasNext) {
-                    isLoading = true
-                    pagesOnRecycler += 1
-                    presenter.loadData(new = new, popularity = popular, page = pagesOnRecycler)
-                }
+            Log.i("qwerty",lastvisibleitemposition.toString()+"  "+ (adapter.itemCount - 1).toString())
+            if ((lastvisibleitemposition == adapter.itemCount - 1) &&(lastvisibleitemposition != -1) ) {
+               if(presenter.isLoading){
+                   presenter.isLoading=false
+                presenter.pagesOnRecycler += 1
+                    presenter.loadData(new = new, popularity = popular, page = presenter.pagesOnRecycler)}
             }
         }
 
@@ -89,13 +79,10 @@ open class GeneralFragment(
 
 
     override fun loadPhotos(data: List<Datum>) {
-//        val k=ArrayList<Datum>()
-//        Log.i("qwerty",adapter.imageList.toString())
-//        k.addAll(adapter.imageList)
-//        k.addAll(data)
-        spisokDatum.addAll(data)
-        adapter.imageList = spisokDatum
-        recyclerVIewOfImage.adapter = adapter
+        val position: Int = adapter.imageList.size
+        adapter.imageList.addAll(data)
+        adapter.notifyItemRangeInserted(position, data.size)
+       presenter.isLoading=true
     }
 
     override fun ConnectionInternet(flag: Boolean) {
@@ -107,17 +94,14 @@ open class GeneralFragment(
         }
     }
 
-    fun loadMorePhotos(data: ArrayList<Datum>) {
-        adapter.imageList = data
-        recyclerVIewOfImage.adapter = adapter
-    }
 
     override fun onRefresh() {
         adapter.imageList.clear()
         adapter.notifyDataSetChanged()
-        recyclerVIewOfImage.adapter = adapter
-        pagesOnRecycler = 1
-        presenter.loadData(new, popular, pagesOnRecycler)
+        presenter.pagesOnRecycler = 1
+//        Log.i("qwerty",presenter.pagesOnRecycler.toString())
+        presenter.loadData(new, popular, presenter.pagesOnRecycler)
+        swipe_container.isRefreshing=false
     }
 
 

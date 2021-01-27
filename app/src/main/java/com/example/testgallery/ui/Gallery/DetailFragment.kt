@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.testgallery.GalleryActivity
 import com.example.testgallery.R
 import com.example.testgallery.api.ApiFactory
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.actionbars.*
 import kotlinx.android.synthetic.main.detail_activity.*
 import moxy.MvpAppCompatFragment
 
@@ -22,10 +24,6 @@ class DetailFragment : MvpAppCompatFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        var mContext : FragmentActivity?  = FragmentActivity()
-//        mContext = this!!.getActivity() as GalleryActivity
-//        mContext.textToButtonOnActionBar()
-
 
         val nameofImage = requireArguments().getString("name")
         val descriptionOfImage = requireArguments().getString("description")
@@ -34,7 +32,16 @@ class DetailFragment : MvpAppCompatFragment() {
         tvTitle.text = nameofImage
         tvDescribtion.text = descriptionOfImage
 
+        val mContext = requireActivity() as GalleryActivity
+        mContext.textToButtonOnActionBar(true)
+        mContext.arrow_button.setOnClickListener {
+            mContext.onBackPressed()
+            mContext.textToButtonOnActionBar(false)
+        }
     }
+
+
+
 
 
 }

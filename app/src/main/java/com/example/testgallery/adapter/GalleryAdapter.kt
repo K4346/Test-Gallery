@@ -22,20 +22,15 @@ class GalleryAdapter() : RecyclerView.Adapter<GalleryAdapter.GalleryHolder>() {
     var onPhotoClickListener: OnPhotoClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GalleryHolder {
-        Log.i("qwerty","Trueeeeeee")
         val view = LayoutInflater.from(parent.context).inflate(R.layout.image_item, parent, false)
         return GalleryHolder(view)
     }
 
     override fun onBindViewHolder(holder: GalleryHolder, position: Int) {
         val image = imageList[position]
-        Picasso.get().load(ApiFactory.BASE_URL_IMAGE + image.image.name).into(holder.image)
+        Picasso.get().load(ApiFactory.BASE_URL_IMAGE + image.image.name).fit().into(holder.image)
         holder.itemView.setOnClickListener {
             onPhotoClickListener?.onPhotoClick(image)
-//       if (imageList.size-1==position){
-//           val detailFragment=DetailFragment()
-//           detailFragment.
-//       }
         }
     }
 

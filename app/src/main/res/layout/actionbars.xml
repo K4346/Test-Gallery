@@ -9,12 +9,12 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/arrow_button"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:srcCompat="@drawable/arrow">
 
     </androidx.appcompat.widget.AppCompatImageView>

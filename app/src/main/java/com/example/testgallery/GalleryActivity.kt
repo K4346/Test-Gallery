@@ -48,9 +48,16 @@ class GalleryActivity : MvpAppCompatActivity(), GalleryView {
     }
 
 
-    fun textToButtonOnActionBar() {
-        actionbar_name.visibility = View.INVISIBLE
-        arrow_button.visibility = View.VISIBLE
+    fun textToButtonOnActionBar(flag: Boolean) {
+        if (flag) {
+            actionbar_name.visibility = View.GONE
+            arrow_button.visibility = View.VISIBLE
+        }
+        else{
+            arrow_button.visibility = View.GONE
+            actionbar_name.visibility = View.VISIBLE
+
+        }
 
     }
 

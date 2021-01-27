@@ -13,9 +13,10 @@ import moxy.MvpPresenter
 
 @InjectViewState
 class GeneraFragmentPresenter : MvpPresenter<GeneraFragmentView>() {
-    var dataList = ArrayList<Datum>()
     private val compositeDisposable = CompositeDisposable()
     val model: GalleryModel = GalleryModelImpl()
+    var isLoading:Boolean=true
+    var pagesOnRecycler = 1
 
     fun loadData(new: String = "false", popularity: String = "false", page: Int = 1) {
         val disposable =
@@ -23,13 +24,14 @@ class GeneraFragmentPresenter : MvpPresenter<GeneraFragmentView>() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    Log.i("qwertyu",it.data.toString())
+                    Log.i("qwerty",pagesOnRecycler.toString())
+
                     viewState.ConnectionInternet(true)
                     viewState.loadPhotos(it.data)
 
                 }, {
                     viewState.ConnectionInternet(false)
-
+                    pagesOnRecycler=1
                 })
         compositeDisposable.add(disposable)
     }
