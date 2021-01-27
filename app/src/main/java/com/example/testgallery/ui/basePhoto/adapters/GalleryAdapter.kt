@@ -1,19 +1,17 @@
-package com.example.testgallery.adapter
+package com.example.testgallery.ui.basePhoto.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testgallery.R
-import com.example.testgallery.api.ApiFactory
-import com.example.testgallery.pojo.Datum
-import com.example.testgallery.ui.Gallery.DetailFragment
+import com.example.testgallery.data.api.ApiFactory
+import com.example.testgallery.domain.pojo.PhotoEntity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.image_item.view.*
 
 class GalleryAdapter() : RecyclerView.Adapter<GalleryAdapter.GalleryHolder>() {
-    var imageList = ArrayList<Datum>()
+    var imageList = ArrayList<PhotoEntity>()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -42,6 +40,6 @@ class GalleryAdapter() : RecyclerView.Adapter<GalleryAdapter.GalleryHolder>() {
     }
 
     interface OnPhotoClickListener {
-        fun onPhotoClick(datum: Datum)
+        fun onPhotoClick(photoEntity: PhotoEntity)
     }
 }

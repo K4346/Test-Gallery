@@ -8,7 +8,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/ivTitleImage"
@@ -16,7 +16,7 @@
         android:layout_height="309dp"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
-        android:contentDescription="titleImage"
+        android:contentDescription="@string/titleimage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -27,11 +27,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:textSize="20sp"
         android:textColor="@color/text_color"
         android:fontFamily="@font/compact_display_semibold"
-        android:text="Get better - unused exploration"
+        android:text="@string/get_better_unused_exploration"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivTitleImage" />
 
@@ -40,14 +40,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:fontFamily="@font/compact_display_regular"
-        android:textSize="12dp"
-        android:textColor="@color/description_color"
-        android:text="Initial design explorations for a online health and wellness platform that unfortunately never made it into the product. Though this was unused work, Have been contemplating on creating a few more of them.
-
-"
+        android:paddingStart="20dp"
         android:paddingEnd="80dp"
+        android:fontFamily="@font/compact_display_regular"
+        android:textSize="12sp"
+        android:textColor="@color/description_color"
+        android:text="@string/initial_design_explorations_for_a_online_health_and_wellness_platform_that_unfortunately_never_made_it_into_the_product_though_this_was_unused_work_have_been_contemplating_on_creating_a_few_more_of_them"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 </androidx.constraintlayout.widget.ConstraintLayout>

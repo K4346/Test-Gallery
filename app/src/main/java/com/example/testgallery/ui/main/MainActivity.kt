@@ -1,20 +1,19 @@
-package com.example.testgallery
+package com.example.testgallery.ui.main
 
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.testgallery.presenters.GalleryPresenter
-import com.example.testgallery.view.GalleryView
+import com.example.testgallery.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.actionbars.*
 import kotlinx.android.synthetic.main.activity_main.*
 import moxy.MvpAppCompatActivity
 import moxy.presenter.InjectPresenter
 
-class GalleryActivity : MvpAppCompatActivity(), GalleryView {
+class MainActivity : MvpAppCompatActivity(), MainView {
     @InjectPresenter
-    lateinit var presenter: GalleryPresenter
+    lateinit var presenter: MainPresenter
     override fun onDestroy() {
         super.onDestroy()
         presenter.disposeComposite()
@@ -27,17 +26,9 @@ class GalleryActivity : MvpAppCompatActivity(), GalleryView {
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
-//        val appBarConfiguration = AppBarConfiguration(
-//            setOf(
-//                R.id.navigation_new, R.id.navigation_popular
-//            )
-//        )
-//
-//     setupActionBarWithNavController(navController, appBarConfiguration)
-//        initializeCustomActionBar()
+
         setActionBar(action_bar_)
-//        val actionBar = supportActionBar
-//        actionBar?.show()
+
         navView.setupWithNavController(navController)
     }
 
@@ -52,8 +43,7 @@ class GalleryActivity : MvpAppCompatActivity(), GalleryView {
         if (flag) {
             actionbar_name.visibility = View.GONE
             arrow_button.visibility = View.VISIBLE
-        }
-        else{
+        } else {
             arrow_button.visibility = View.GONE
             actionbar_name.visibility = View.VISIBLE
 

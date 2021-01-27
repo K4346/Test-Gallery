@@ -6,4 +6,7 @@
     <string name="slow_or_no_internet_connection_please_check_your_internet_settings">Slow or no internet connection. Please check your internet settings</string>
     <string name="oh_shucks">Oh shucks!</string>
     <string name="connection_failed">Connection Failed</string>
+    <string name="initial_design_explorations_for_a_online_health_and_wellness_platform_that_unfortunately_never_made_it_into_the_product_though_this_was_unused_work_have_been_contemplating_on_creating_a_few_more_of_them">Initial design explorations for a online health and wellness platform that unfortunately never made it into the product. Though this was unused work, Have been contemplating on creating a few more of them.</string>
+    <string name="get_better_unused_exploration">Get better - unused exploration</string>
+    <string name="titleimage">titleImage</string>
 </resources>

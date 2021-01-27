@@ -4,23 +4,10 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <!--    android:paddingTop="?attr/actionBarSize">-->
+
     <include
         android:id="@+id/include8"
         layout="@layout/actionbars" />
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/tv_name_fragment"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_marginTop="10dp"-->
-    <!--        android:layout_marginStart="21dp"-->
-    <!--        android:textSize="30sp"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        android:textColor="@color/text_color"-->
-    <!--        android:fontFamily="@font/compact_display_semibold"/>-->
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
@@ -110,7 +97,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitleBadConnection" />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

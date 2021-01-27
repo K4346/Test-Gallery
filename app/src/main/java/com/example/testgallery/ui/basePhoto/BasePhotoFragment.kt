@@ -1,92 +1,87 @@
-package com.example.testgallery.ui.Gallery
+package com.example.testgallery.ui.basePhoto
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.example.testgallery.*
-import com.example.testgallery.adapter.GalleryAdapter
-import com.example.testgallery.pojo.Datum
-import com.example.testgallery.presenters.GeneraFragmentPresenter
-import com.example.testgallery.view.GeneraFragmentView
+import com.example.testgallery.R
+import com.example.testgallery.domain.pojo.PhotoEntity
+import com.example.testgallery.ui.basePhoto.adapters.GalleryAdapter
+import com.example.testgallery.ui.main.MainActivity
 import kotlinx.android.synthetic.main.recycler_view.*
 import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
 
-
-open class GeneralFragment(
+open class BasePhotoFragment(
     private val new: String,
     private val popular: String
-
-) : MvpAppCompatFragment(), GeneraFragmentView, SwipeRefreshLayout.OnRefreshListener {
-
+) : MvpAppCompatFragment(), BasePhotoView, SwipeRefreshLayout.OnRefreshListener {
 
     @InjectPresenter
-    lateinit var presenter: GeneraFragmentPresenter
+    lateinit var presenter: BasePhotoPresenter
 
     private val adapter = GalleryAdapter()
-
-//    var isLoading=true
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         return inflater.inflate(R.layout.recycler_view, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         swipe_container.setOnRefreshListener(this)
-        presenter.pagesOnRecycler=1
-       val mContext = requireActivity() as GalleryActivity
+        presenter.pagesOnRecycler = 1
+        val mContext = requireActivity() as MainActivity
         mContext.changeActionBar(popular)
-
+        mContext.textToButtonOnActionBar(false)
         val myLayoutManager = GridLayoutManager(context, 2)
         recyclerVIewOfImage.layoutManager = myLayoutManager
         recyclerVIewOfImage.adapter = adapter
         presenter.loadData(new = new, popularity = popular)
 
         adapter.onPhotoClickListener = object : GalleryAdapter.OnPhotoClickListener {
-            override fun onPhotoClick(datum: Datum) {
+            override fun onPhotoClick(photoEntity: PhotoEntity) {
                 val idtoDetail = Bundle()
-                idtoDetail.putString("name", datum.name)
-                idtoDetail.putString("description", datum.description)
-                idtoDetail.putString("url", datum.image.name)
+                idtoDetail.putString("name", photoEntity.name)
+                idtoDetail.putString("description", photoEntity.description)
+                idtoDetail.putString("url", photoEntity.image.name)
                 findNavController().navigate(R.id.detail_navigation, idtoDetail)
 
             }
         }
 
         recyclerVIewOfImage.setOnScrollChangeListener { _: View, _: Int, _: Int, _: Int, _: Int ->
-            val lastvisibleitemposition = myLayoutManager.findLastVisibleItemPosition()
-            Log.i("qwerty",lastvisibleitemposition.toString()+"  "+ (adapter.itemCount - 1).toString())
-            if ((lastvisibleitemposition == adapter.itemCount - 1) &&(lastvisibleitemposition != -1) ) {
-               if(presenter.isLoading){
-                   presenter.isLoading=false
-                presenter.pagesOnRecycler += 1
-                    presenter.loadData(new = new, popularity = popular, page = presenter.pagesOnRecycler)}
+            val lastVisibleItemPosition = myLayoutManager.findLastVisibleItemPosition()
+            if ((lastVisibleItemPosition == adapter.itemCount - 1) && (lastVisibleItemPosition != -1)) {
+                if (presenter.isLoading) {
+                    presenter.isLoading = false
+                    presenter.pagesOnRecycler += 1
+                    presenter.loadData(
+                        new = new,
+                        popularity = popular,
+                        page = presenter.pagesOnRecycler
+                    )
+                }
             }
         }
 
-
     }
 
 
-    override fun loadPhotos(data: List<Datum>) {
+    override fun loadPhotos(photoEntities: List<PhotoEntity>) {
         val position: Int = adapter.imageList.size
-        adapter.imageList.addAll(data)
-        adapter.notifyItemRangeInserted(position, data.size)
-       presenter.isLoading=true
+        adapter.imageList.addAll(photoEntities)
+        adapter.notifyItemRangeInserted(position, photoEntities.size)
+        presenter.isLoading = true
     }
 
-    override fun ConnectionInternet(flag: Boolean) {
-        val context = requireActivity() as GalleryActivity
+    override fun connectionInternet(flag: Boolean) {
+        val context = requireActivity() as MainActivity
         if (!flag) {
             context.badConnection()
         } else {
@@ -94,15 +89,12 @@ open class GeneralFragment(
         }
     }
 
-
     override fun onRefresh() {
         adapter.imageList.clear()
         adapter.notifyDataSetChanged()
         presenter.pagesOnRecycler = 1
-//        Log.i("qwerty",presenter.pagesOnRecycler.toString())
         presenter.loadData(new, popular, presenter.pagesOnRecycler)
-        swipe_container.isRefreshing=false
+        swipe_container.isRefreshing = false
     }
-
 
 }

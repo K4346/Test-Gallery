@@ -1,4 +1,4 @@
-package com.example.testgallery.api
+package com.example.testgallery.data.api
 
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory

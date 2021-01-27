@@ -6,16 +6,16 @@
 
     <fragment
         android:id="@+id/navigation_new"
-        android:name="com.example.testgallery.ui.Gallery.NewFragment"
+        android:name="com.example.testgallery.ui.newPhoto.NewFragment"
         android:label="@string/title_new" />
 
     <fragment
         android:id="@+id/navigation_popular"
-        android:name="com.example.testgallery.ui.Gallery.PopularFragment"
+        android:name="com.example.testgallery.ui.popularPhoto.PopularFragment"
         android:label="@string/title_popular" />
 
     <fragment
         android:id="@+id/detail_navigation"
-        android:name="com.example.testgallery.ui.Gallery.DetailFragment"
+        android:name="com.example.testgallery.ui.detail.DetailFragment"
         android:label="Detail" />
 </navigation>

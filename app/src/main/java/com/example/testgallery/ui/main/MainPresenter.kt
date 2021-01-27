@@ -1,12 +1,12 @@
-package com.example.testgallery.presenters
+package com.example.testgallery.ui.main
 
-import com.example.testgallery.view.GalleryView
+import com.example.testgallery.ui.main.MainView
 import io.reactivex.disposables.CompositeDisposable
 import moxy.InjectViewState
 import moxy.MvpPresenter
 
 @InjectViewState
-class GalleryPresenter : MvpPresenter<GalleryView>(){
+class MainPresenter : MvpPresenter<MainView>(){
     private val compositeDisposable = CompositeDisposable()
     fun disposeComposite() {
         compositeDisposable.dispose()
