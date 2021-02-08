@@ -14,11 +14,6 @@ import moxy.presenter.InjectPresenter
 class MainActivity : MvpAppCompatActivity(), MainView {
     @InjectPresenter
     lateinit var presenter: MainPresenter
-    override fun onDestroy() {
-        super.onDestroy()
-        presenter.disposeComposite()
-
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

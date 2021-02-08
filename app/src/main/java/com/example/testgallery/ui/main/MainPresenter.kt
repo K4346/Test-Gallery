@@ -6,10 +6,5 @@ import moxy.InjectViewState
 import moxy.MvpPresenter
 
 @InjectViewState
-class MainPresenter : MvpPresenter<MainView>(){
-    private val compositeDisposable = CompositeDisposable()
-    fun disposeComposite() {
-        compositeDisposable.dispose()
-    }
-
+class MainPresenter : MvpPresenter<MainView>() {
 }
