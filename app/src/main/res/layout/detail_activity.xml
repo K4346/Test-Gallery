@@ -42,6 +42,7 @@
         android:layout_marginTop="20dp"
         android:paddingStart="20dp"
         android:paddingEnd="80dp"
+        android:paddingBottom="10dp"
         android:fontFamily="@font/compact_display_regular"
         android:textSize="12sp"
         android:textColor="@color/description_color"

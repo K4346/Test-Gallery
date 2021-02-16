@@ -8,6 +8,7 @@ import com.example.testgallery.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.actionbars.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.recycler_view.*
 import moxy.MvpAppCompatActivity
 import moxy.presenter.InjectPresenter
 
@@ -45,27 +46,5 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         }
 
     }
-
-    fun goodConnection() {
-
-        if (ivBadConnection.visibility == View.VISIBLE) {
-            llBadConnection.visibility = View.INVISIBLE
-            ivBadConnection.visibility = View.INVISIBLE
-            tvTitleBadConnection.visibility = View.INVISIBLE
-            tvDescriptionBadConnection.visibility = View.INVISIBLE
-
-        }
-
-    }
-
-    fun badConnection() {
-        if (ivBadConnection.visibility == View.INVISIBLE) {
-            llBadConnection.visibility = View.VISIBLE
-            ivBadConnection.visibility = View.VISIBLE
-            tvTitleBadConnection.visibility = View.VISIBLE
-            tvDescriptionBadConnection.visibility = View.VISIBLE
-        }
-    }
-
 
 }

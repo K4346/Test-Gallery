@@ -51,7 +51,6 @@ open class BasePhotoFragment(
                 idtoDetail.putString("description", photoEntity.description)
                 idtoDetail.putString("url", photoEntity.image.name)
                 findNavController().navigate(R.id.detail_navigation, idtoDetail)
-
             }
         }
 
@@ -81,11 +80,10 @@ open class BasePhotoFragment(
     }
 
     override fun connectionInternet(flag: Boolean) {
-        val context = requireActivity() as MainActivity
         if (!flag) {
-            context.badConnection()
+            badConnection()
         } else {
-            context.goodConnection()
+            goodConnection()
         }
     }
 
@@ -95,6 +93,23 @@ open class BasePhotoFragment(
         presenter.pagesOnRecycler = 1
         presenter.loadData(new, popular, presenter.pagesOnRecycler)
         swipe_container.isRefreshing = false
+
+
+    }
+
+
+    fun goodConnection() {
+
+        if (llBadConnection.visibility == View.VISIBLE) {
+            llBadConnection.visibility = View.INVISIBLE
+        }
+
+    }
+
+    fun badConnection() {
+        if (llBadConnection.visibility == View.INVISIBLE) {
+            llBadConnection.visibility = View.VISIBLE
+        }
     }
 
 }
