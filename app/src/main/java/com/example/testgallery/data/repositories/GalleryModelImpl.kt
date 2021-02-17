@@ -1,6 +1,5 @@
 package com.example.testgallery.data.repositories
 
-import android.util.Log
 import com.example.testgallery.data.api.ApiFactory
 import com.example.testgallery.domain.pojo.PaginationResponse
 import com.example.testgallery.domain.pojo.PhotoEntity
@@ -14,6 +13,9 @@ class GalleryModelImpl : GalleryModel {
         popularity: String,
         page: Int
     ): Single<PaginationResponse<PhotoEntity>> {
-        return ApiFactory.apiService.getPhotosInfo(new, popularity, page)
+        return if (new == "true")
+            ApiFactory.apiService.getNewPhotosInfo(new, page)
+        else
+            ApiFactory.apiService.getPopularPhotosInfo(popularity, page)
     }
 }

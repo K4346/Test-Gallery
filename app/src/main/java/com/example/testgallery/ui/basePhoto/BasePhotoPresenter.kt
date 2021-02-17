@@ -21,8 +21,12 @@ class BasePhotoPresenter : MvpPresenter<BasePhotoView>() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    viewState.connectionInternet(true)
-                    viewState.loadPhotos(it.data)
+                    if (page == it.countOfPages) {
+                        viewState.toastEndPages()
+                    } else {
+                        viewState.connectionInternet(true)
+                        viewState.loadPhotos(it.data)
+                    }
                 }, {
                     viewState.connectionInternet(false)
                     pagesOnRecycler = 1

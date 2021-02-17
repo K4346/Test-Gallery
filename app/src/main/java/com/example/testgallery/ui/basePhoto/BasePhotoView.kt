@@ -5,7 +5,7 @@ import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndSingleStrategy
 import moxy.viewstate.strategy.StateStrategyType
 
-interface BasePhotoView:MvpView  {
+interface BasePhotoView : MvpView {
 
     @StateStrategyType(value = AddToEndSingleStrategy::class)
     fun loadPhotos(photoEntities: List<PhotoEntity>)
@@ -14,4 +14,6 @@ interface BasePhotoView:MvpView  {
     @StateStrategyType(value = AddToEndSingleStrategy::class)
     fun connectionInternet(flag: Boolean)
 
+    @StateStrategyType(value = AddToEndSingleStrategy::class)
+    fun toastEndPages()
 }

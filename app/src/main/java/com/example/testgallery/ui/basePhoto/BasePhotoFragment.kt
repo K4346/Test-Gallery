@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -35,6 +36,7 @@ open class BasePhotoFragment(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         swipe_container.setOnRefreshListener(this)
+
         presenter.pagesOnRecycler = 1
         val mContext = requireActivity() as MainActivity
         mContext.changeActionBar(popular)
@@ -59,6 +61,7 @@ open class BasePhotoFragment(
             if ((lastVisibleItemPosition == adapter.itemCount - 1) && (lastVisibleItemPosition != -1)) {
                 if (presenter.isLoading) {
                     presenter.isLoading = false
+                    pb_for_rv.visibility = View.VISIBLE
                     presenter.pagesOnRecycler += 1
                     presenter.loadData(
                         new = new,
@@ -76,6 +79,7 @@ open class BasePhotoFragment(
         val position: Int = adapter.imageList.size
         adapter.imageList.addAll(photoEntities)
         adapter.notifyItemRangeInserted(position, photoEntities.size)
+        pb_for_rv.visibility = View.INVISIBLE
         presenter.isLoading = true
     }
 
@@ -98,7 +102,7 @@ open class BasePhotoFragment(
     }
 
 
-    fun goodConnection() {
+    private fun goodConnection() {
 
         if (llBadConnection.visibility == View.VISIBLE) {
             llBadConnection.visibility = View.INVISIBLE
@@ -106,10 +110,20 @@ open class BasePhotoFragment(
 
     }
 
-    fun badConnection() {
+    private fun badConnection() {
         if (llBadConnection.visibility == View.INVISIBLE) {
             llBadConnection.visibility = View.VISIBLE
+
+            if (!presenter.isLoading) {
+                pb_for_rv.visibility = View.INVISIBLE
+                presenter.isLoading = true
+            }
         }
+    }
+
+    override fun toastEndPages() {
+        Toast.makeText(requireContext(), "Конец списка", Toast.LENGTH_SHORT).show()
+        pb_for_rv.visibility = View.INVISIBLE
     }
 
 }
