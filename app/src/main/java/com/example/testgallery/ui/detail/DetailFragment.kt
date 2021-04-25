@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.testgallery.R
-import com.example.testgallery.data.api.ApiFactory
+import com.example.testgallery.di.RetrofitModule
 import com.example.testgallery.ui.main.MainActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.actionbars.*
@@ -27,7 +27,7 @@ class DetailFragment : MvpAppCompatFragment() {
 
         val nameofImage = requireArguments().getString("name")
         val descriptionOfImage = requireArguments().getString("description")
-        val urlOfImage = ApiFactory.BASE_URL_IMAGE + requireArguments().getString("url")
+        val urlOfImage = RetrofitModule.BASE_URL_IMAGE + requireArguments().getString("url")
         Picasso.get().load(urlOfImage).fit().into(ivTitleImage)
         tvTitle.text = nameofImage
         tvDescribtion.text = descriptionOfImage

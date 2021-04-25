@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testgallery.R
-import com.example.testgallery.data.api.ApiFactory
+import com.example.testgallery.di.RetrofitModule
 import com.example.testgallery.domain.pojo.PhotoEntity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.image_item.view.*
@@ -26,7 +26,7 @@ class GalleryAdapter() : RecyclerView.Adapter<GalleryAdapter.GalleryHolder>() {
 
     override fun onBindViewHolder(holder: GalleryHolder, position: Int) {
         val image = imageList[position]
-        Picasso.get().load(ApiFactory.BASE_URL_IMAGE + image.image.name).fit().into(holder.image)
+        Picasso.get().load(RetrofitModule.BASE_URL_IMAGE + image.image.name).fit().into(holder.image)
         holder.itemView.setOnClickListener {
             onPhotoClickListener?.onPhotoClick(image)
         }
